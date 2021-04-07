@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class PlayerModel {
   int id;
   String name;

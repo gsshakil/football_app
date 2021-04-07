@@ -10,11 +10,11 @@ class FeaturedMatchesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
+          Container(
+            transform: Matrix4.translationValues(0, 10, 0),
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               'Featured Matches',
@@ -35,7 +35,7 @@ class FeaturedMatchesWidget extends StatelessWidget {
               itemBuilder: (context, index) => Container(
                 width: 104,
                 height: 96,
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
@@ -55,64 +55,90 @@ class FeaturedMatchesWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(162, 165, 178, 1),
-                            border: Border.all(
+                      width: 110,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
                               color: Color.fromRGBO(242, 244, 250, 1),
-                              width: 2,
+                              border: Border.all(
+                                color: Color.fromRGBO(242, 244, 250, 1),
+                                width: 2,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.elliptical(40, 40)),
                             ),
-                            borderRadius:
-                                BorderRadius.all(Radius.elliptical(40, 40))),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image(
-                            image: AssetImage(matchesList[index].team1LogoUrl),
-                            width: 24,
-                            height: 24,
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image(
+                                  image: AssetImage(
+                                      matchesList[index].team1LogoUrl),
+                                  width: 24,
+                                  height: 24,
+                                ),
+                              ),
+                            ),
                           ),
-                        )),
-                    Text(
-                      'VS',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color.fromRGBO(34, 34, 34, 1),
-                        fontFamily: 'Poppins',
-                        fontSize: 10,
+                          Text(
+                            'VS',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color.fromRGBO(34, 34, 34, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 10,
+                            ),
+                          ),
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(242, 244, 250, 1),
+                              border: Border.all(
+                                color: Color.fromRGBO(242, 244, 250, 1),
+                                width: 2,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.elliptical(40, 40)),
+                            ),
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image(
+                                  image: AssetImage(
+                                      matchesList[index].team2LogoUrl),
+                                  width: 24,
+                                  height: 24,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(162, 165, 178, 1),
-                            border: Border.all(
-                              color: Color.fromRGBO(242, 244, 250, 1),
-                              width: 2,
-                            ),
-                            borderRadius:
-                                BorderRadius.all(Radius.elliptical(40, 40))),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image(
-                            image: AssetImage(matchesList[index].team2LogoUrl),
-                            width: 24,
-                            height: 24,
-                          ),
-                        )),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          matchesList[index].status,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(8, 14, 66, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            matchesList[index].status,
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Color.fromRGBO(8, 14, 66, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Text(
                           matchesList[index].dateTime,
@@ -128,6 +154,9 @@ class FeaturedMatchesWidget extends StatelessWidget {
                     CircularPercentIndicator(
                       radius: 50.0,
                       lineWidth: 5.0,
+                      animation: true,
+                      startAngle: 0.0,
+                      animationDuration: 1200,
                       percent: (matchesList[index].completion * .01),
                       center: new Text(
                         "${matchesList[index].completion.toStringAsFixed(0)}%",
@@ -138,6 +167,7 @@ class FeaturedMatchesWidget extends StatelessWidget {
                         ),
                       ),
                       progressColor: Colors.green,
+                      circularStrokeCap: CircularStrokeCap.butt,
                     )
                   ],
                 ),

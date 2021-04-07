@@ -51,7 +51,7 @@ class _LandingPageState extends State<LandingPage> {
           _pageController.animateToPage(
             index,
             duration: Duration(milliseconds: 200),
-            curve: Curves.easeInCubic,
+            curve: Curves.easeIn,
           );
         },
         items: [
