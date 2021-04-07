@@ -1,249 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:football_app/widgets/PlayerHorizontalList.dart';
+import 'package:football_app/widgets/WonTipsWidget.dart';
+import 'package:football_app/widgets/FeaturedTipsWidget.dart';
+import 'package:football_app/widgets/FeaturedMatchesWidget.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'uwin',
-          style: Theme.of(context).appBarTheme.textTheme.headline1,
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {},
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(240),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0.3, 1],
-                colors: [
-                  Theme.of(context).primaryColor,
-                  Theme.of(context).accentColor
-                ],
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 116,
-                  height: 32,
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(Icons.sports_football),
-                    title: Text('Football'),
-                    trailing: Icon(Icons.arrow_downward_sharp),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0.0, 2.0),
+                    blurRadius: 6.0,
                   ),
-                ),
-                Container(
-                  height: 150,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: BouncingScrollPhysics(),
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Container(
-                              width: 68,
-                              height: 78,
-                              margin: EdgeInsets.all(10),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    top: 10,
-                                    child: CircleAvatar(
-                                      radius: 34,
-                                      backgroundColor: Colors.white,
-                                      child: CircleAvatar(
-                                        radius: 28,
-                                        backgroundImage: AssetImage(
-                                            'assets/images/player1.png'),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    right: 0,
-                                    top: 0,
-                                    child: CircleAvatar(
-                                      radius: 14,
-                                      backgroundColor:
-                                          Theme.of(context).primaryColor,
-                                      child: CircleAvatar(
-                                        radius: 12,
-                                        backgroundColor: Colors.white,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Image(
-                                    image: AssetImage('assets/images/hu.png'),
-                                    width: 16,
-                                    height: 12,
-                                  ),
-                                  Text('Oscar W.')
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Winning (In Play) / Won Tips',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Color.fromRGBO(8, 14, 66, 1),
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    letterSpacing: 0),
-              ),
-              // ****WON TIPS SECTION *****//
-              Container(
-                height: 130,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 8,
-                  itemBuilder: (context, index) => Container(
-                      width: 100,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(41),
-                          topRight: Radius.circular(41),
-                          bottomLeft: Radius.circular(41),
-                          bottomRight: Radius.circular(41),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color.fromRGBO(
-                                  5, 28, 63, 0.05000000074505806),
-                              offset: Offset(0, 4),
-                              blurRadius: 12)
-                        ],
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                      )),
+                ],
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.8, 1],
+                  colors: [
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).accentColor
+                  ],
                 ),
               ),
-              // ****FEATURED TIPS SECTION *****//
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
+                alignment: Alignment.topCenter,
                 children: [
-                  Text(
-                    'Featured Tips',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Color.fromRGBO(8, 14, 66, 1),
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                        letterSpacing: 0),
-                  ),
+                  // *** Bckground Gradient ****////
                   Container(
-                    height: 130,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 8,
-                      itemBuilder: (context, index) => Container(
-                        width: 104,
-                        height: 96,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12),
-                            bottomRight: Radius.circular(12),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color.fromRGBO(
-                                    5, 28, 63, 0.05000000074505806),
-                                offset: Offset(0, 4),
-                                blurRadius: 12)
-                          ],
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                        ),
+                    height: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: [0.3, 1],
+                        colors: [
+                          Theme.of(context).primaryColor,
+                          Theme.of(context).accentColor
+                        ],
                       ),
+                    ),
+                  ),
+
+                  // *** App Bar *** //
+                  Positioned(
+                    top: 30,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          width: MediaQuery.of(context).size.width,
+                          height: 54,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                  icon: Icon(Icons.search),
+                                  onPressed: () {},
+                                  color: Colors.white),
+                              Text(
+                                'uwin',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.4),
+                              ),
+                              IconButton(
+                                  icon: Icon(Icons.settings),
+                                  onPressed: () {},
+                                  color: Colors.white),
+                            ],
+                          ),
+                        ),
+                        // *** Game DropDown Button *** //
+                        Container(
+                          width: 116,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                            color: Color.fromRGBO(255, 255, 255, .25),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.sports_football,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
+                                Text(
+                                  'Football',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // *** Player List Section *** //
+                        PlayerHorizontalList(),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            WonTipsWidget(),
+            FeaturedTipsWidget(),
 
-          // ****FEATURED MATCHES SECTION *****//
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Featured Matches',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Color.fromRGBO(8, 14, 66, 1),
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    letterSpacing: 0),
-              ),
-              Container(
-                height: 130,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 8,
-                  itemBuilder: (context, index) => Container(
-                    width: 104,
-                    height: 96,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color:
-                                Color.fromRGBO(5, 28, 63, 0.05000000074505806),
-                            offset: Offset(0, 4),
-                            blurRadius: 12)
-                      ],
-                      color: Color.fromRGBO(255, 255, 255, 1),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+            // ****FEATURED MATCHES SECTION *****//
+            FeaturedMatchesWidget(),
+          ],
+        ),
       ),
     );
   }

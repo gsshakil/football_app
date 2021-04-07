@@ -12,28 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Football App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
         primaryColor: Color(0xFF0CBA60),
         accentColor: Color(0xFF097160),
         scaffoldBackgroundColor: Colors.white,
-        dividerColor: Colors.grey,
-        backgroundColor: Colors.white,
-        shadowColor: Color(0xFF636363),
-        appBarTheme: AppBarTheme(
-          color: Color(0xFF0CBA60),
-          iconTheme: IconThemeData(color: Colors.white),
-          textTheme: TextTheme(headline1: TextStyle(color: Colors.white)),
-        ),
-        // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        //     selectedIconTheme: IconThemeData(
-        //       color: Theme.of(context).primaryColor,
-        //     ),
-        //     unselectedIconTheme: IconThemeData(color: Colors.grey),
-        //     selectedLabelStyle:
-        //         TextStyle(color: Theme.of(context).primaryColor),
-        //     unselectedLabelStyle: TextStyle(color: Colors.grey)),
-        textTheme: TextTheme(),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
       home: LandingPage(),

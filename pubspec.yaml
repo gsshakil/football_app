@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   flutter_svg : ^0.17.4
+  percent_indicator: "^2.1.7+2"
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +48,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
+    - assets/images/players/
+    - assets/images/flags/
+    - assets/images/teams/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
